@@ -1,0 +1,6 @@
+img {
+  display: block; /* Remove any default text alignment for the image */
+  margin: 0 auto; /* Center the image horizontally */
+  width: 250px;
+  height: 250px;
+}
