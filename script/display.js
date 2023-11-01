@@ -13,7 +13,7 @@ const method_tooltips = [
 const method_folder = ["IGISTDM", "NS", "RAASN", "AdaIN"];
 const image_type = ".png";
 const not_found_image = "images/image-not-found.png";
-const content_amount = 50;
+const content_amount = 20;
 const style_amount = 100;
 const row_of_images = 5;
 // image base index
