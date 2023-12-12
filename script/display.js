@@ -1,16 +1,14 @@
 const methods = [
   "IGISTDM",
-  "Gatys et al.",
   "Ghiasi et al.",
   "Huang and Belongie",
 ];
 const method_tooltips = [
   "Our method",
-  "A neural algorithm of artistic style",
   "Exploring the structure of a real-time, arbitrary neural artistic stylization network",
   "Arbitrary style transfer in real-time with adaptive instance normalization",
 ];
-const method_folder = ["IGISTDM", "NS", "RAASN", "AdaIN"];
+const method_folder = ["IGISTDM", "RAASN", "AdaIN"];
 const image_type = ".png";
 const not_found_image = "images/image-not-found.png";
 const content_amount = 20;
@@ -19,6 +17,8 @@ const row_of_images = 5;
 // image base index
 let content_base = 0;
 let style_base = 0;
+// styling
+const left_margin = "ms-1"
 
 function generate_label_row() {
   let method_text = "";
@@ -30,7 +30,7 @@ function generate_label_row() {
         )}</div>`;
   }
   let label_row_html = `
-    <div class="row">
+    <div class="row ${left_margin}">
       <div class="col-2 text-center">Content</div>
       <div class="col-2 text-center">Style</div>
       ${method_text}
@@ -60,8 +60,8 @@ function generate_image_row(
   }
   const experiment_repo = `https://github.com/IGISTDM/experiment/raw/master/images/`;
   let image_row = `
-    <div class="row mb-1">
-        <div class="col-2 container">
+    <div class="row mb-1 ${left_margin}">
+        <div class="col-2">
             <img src="${experiment_repo}/content/${content_image_name}">
         </div>
         <div class="col-2">
