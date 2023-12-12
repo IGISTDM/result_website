@@ -72,6 +72,15 @@ function add_selector_buttons() {
     "danger"
   );
 
+  // hint space
+  let hint_space = "";
+  for(let i=0; i<20; i++){
+    hint_space += `&nbsp;&nbsp;&nbsp;`;
+  }
+
+  // hint
+  const hint = "press E/D to switch content, press I/K to switch style"
+
   let selector = document.getElementById("selector");
   selector.innerHTML = `
   <div>
@@ -79,6 +88,7 @@ function add_selector_buttons() {
     <div class="btn-group">
       ${style_buttons}${display_button_html}
     </div>
+    ${hint_space}${hint}
   </div>`;
 
   // Event listener
