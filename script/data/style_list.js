@@ -28,8 +28,6 @@
 //     "Ukiyo_e"
 // ]
 style = [
-  "Abstract_Expressionism",
-  "Baroque",
   "Cubism",
   "Fauvism",
   "Pointillism",

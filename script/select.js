@@ -48,9 +48,12 @@ function create_button(button_id, button_name, color) {
 }
 
 function add_selector_buttons() {
-  // add style button html
-  let selector = document.getElementById("selector");
-  selector.innerHTML = "Style: ";
+  // title
+  const left_space = "&nbsp;&nbsp;&nbsp;";
+  let title = `${left_space}Style: `;
+
+  // style button html
+  let style_buttons = ``;
   let button_amount = style.length;
   let buttons_html = new Array(button_amount);
   for (let index = 0; index < button_amount; index++) {
@@ -59,26 +62,24 @@ function add_selector_buttons() {
       style[index],
       style_button_color
     );
-    selector.innerHTML += buttons_html[index] = new_button;
+    style_buttons += buttons_html[index] = new_button;
   }
 
-  // add display button html
-  let style_and_display_space = "";
-  space_amount = 30;
-  for (let i = 0; i < space_amount; i++) {
-    style_and_display_space += "&nbsp;";
-  }
+  // display button html
   let display_button_html = create_button(
     display_button_id,
     "Display",
     "danger"
   );
-  selector.innerHTML += `${style_and_display_space}${display_button_html}`;
-  document
-    .getElementById(display_button_id)
-    .addEventListener("click", function () {
-      display();
-    });
+
+  let selector = document.getElementById("selector");
+  selector.innerHTML = `
+  <div>
+    ${title}
+    <div class="btn-group">
+      ${style_buttons}${display_button_html}
+    </div>
+  </div>`;
 
   // Event listener
   //          add event listener for style buttons
@@ -88,6 +89,12 @@ function add_selector_buttons() {
       change_style(button_id);
     });
   }
+  //          add event listener for display button
+  document
+    .getElementById(display_button_id)
+    .addEventListener("click", function () {
+      display();
+    });
 }
 
 add_selector_buttons();
