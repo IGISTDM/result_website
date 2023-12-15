@@ -13,7 +13,7 @@ const image_type = ".png";
 const not_found_image = "images/image-not-found.png";
 const content_amount = 20;
 const style_amount = 100;
-const row_of_images = 5;
+const row_of_images = 3;
 // image base index
 let content_base = 0;
 let style_base = 0;
