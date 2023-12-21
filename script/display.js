@@ -1,14 +1,11 @@
-const methods = [
-  "IGISTDM",
-  "Ghiasi et al.",
-  "Huang and Belongie",
-];
+const methods = ["IGISTDM", "Ghiasi et al.", "Huang and Belongie"];
 const method_tooltips = [
   "Our method",
   "Exploring the structure of a real-time, arbitrary neural artistic stylization network",
   "Arbitrary style transfer in real-time with adaptive instance normalization",
 ];
 const method_folder = ["IGISTDM", "RAASN", "AdaIN"];
+const content_type = "scene";
 const image_type = ".png";
 const not_found_image = "images/image-not-found.png";
 const content_amount = 20;
@@ -18,7 +15,7 @@ const row_of_images = 3;
 let content_base = 0;
 let style_base = 0;
 // styling
-const left_margin = "ms-1"
+const left_margin = "ms-1";
 
 function generate_label_row() {
   let method_text = "";
@@ -44,28 +41,31 @@ function generate_image_row(
   style_image_index
 ) {
   // content
-  let content_image_name = `${content}_${content_image_index}${image_type}`;
+  let content_image_name = `${content_type}_${content_image_index}`;
+  let content_image = `${content_image_name}${image_type}`;
   // style
   let style_name = style[style_index];
-  let style_image_name = `${style_name}_${style_image_index}${image_type}`;
+  let style_image_name = `${style_name}_${style_image_index}`;
+  let style_image = `${style_image_name}${image_type}`;
   // style transfer result
   let stylized_result = "";
+  let result_repo = `https://raw.githubusercontent.com/IGISTDM/results/master/`;
   for (let i = 0; i < methods.length; i++) {
-    const image_folder_path = `results/${method_folder[i]}/${content}-${style_name}`;
-    const image_name = `${content}_${content_image_index}-${style_name}_${style_image_index}${image_type}`;
+    const image_folder_path = `${result_repo}/${method_folder[i]}/${content_type}-${style_name}`;
+    const stylized_image_name = `${content_image_name}-${style_image_name}${image_type}`;
     stylized_result += `
       <div class="col-2">
-        <img src="${image_folder_path}/${image_name}" onerror="this.src='${not_found_image}';">
+        <img src="${image_folder_path}/${stylized_image_name}" onerror="this.src='${not_found_image}';">
       </div>`;
   }
   const experiment_repo = `https://github.com/IGISTDM/experiment/raw/master/images/`;
   let image_row = `
     <div class="row mb-1 ${left_margin}">
         <div class="col-2">
-            <img src="${experiment_repo}/content/${content_image_name}">
+            <img src="${experiment_repo}/content/${content_image}">
         </div>
         <div class="col-2">
-            <img src="${experiment_repo}/style/${style_name}/${style_image_name}">
+            <img src="${experiment_repo}/style/${style_name}/${style_image}">
         </div>
         ${stylized_result}
     </div>`;

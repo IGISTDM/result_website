@@ -3,7 +3,6 @@ let selected_style = NOT_CHOSEN;
 // BUTTON STATE
 const BUTTON_NOT_SELECTED = 0;
 const BUTTON_SELECTED = 1;
-const content = "scene";
 // BUTTON ID
 const style_button_id_prefix = "btn_style_";
 const display_button_id = "display";
