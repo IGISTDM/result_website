@@ -49,7 +49,7 @@ function generate_image_row(
   let style_image = `${style_image_name}${image_type}`;
   // style transfer result
   let stylized_result = "";
-  let result_repo = `https://raw.githubusercontent.com/IGISTDM/results/master/`;
+  let result_repo = `https://raw.githubusercontent.com/IGISTDM/results/master`;
   for (let i = 0; i < methods.length; i++) {
     const image_folder_path = `${result_repo}/${method_folder[i]}/${content_type}-${style_name}`;
     const stylized_image_name = `${content_image_name}-${style_image_name}${image_type}`;
@@ -58,7 +58,7 @@ function generate_image_row(
         <img src="${image_folder_path}/${stylized_image_name}" onerror="this.src='${not_found_image}';">
       </div>`;
   }
-  const experiment_repo = `https://github.com/IGISTDM/experiment/raw/master/images/`;
+  const experiment_repo = `https://raw.githubusercontent.com/IGISTDM/experiment/master/images`;
   let image_row = `
     <div class="row mb-1 ${left_margin}">
         <div class="col-2">
