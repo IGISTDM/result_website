@@ -35,6 +35,34 @@ function generate_label_row() {
   return label_row_html;
 }
 
+function fix_image_size() {
+  // Get the width and height of the browser window
+  let windowWidth =
+    window.innerWidth ||
+    document.documentElement.clientWidth ||
+    document.body.clientWidth;
+  let windowHeight =
+    window.innerHeight ||
+    document.documentElement.clientHeight ||
+    document.body.clientHeight;
+
+  // image size
+  const width_ratio = 250 / 1536;
+  const image_width = windowWidth * width_ratio;
+  const height_ratio = 250 / 695;
+  const image_height = windowHeight * height_ratio;
+  console.log(image_width, image_height);
+  // Get all img elements on the page
+  var imgElements = document.getElementsByTagName("img");
+
+  // Iterate through each img element and modify its size
+  for (var i = 0; i < imgElements.length; i++) {
+    let img = imgElements[i];
+    img.style.width = `${image_width}px`;
+    img.style.height = `${image_height}px`;
+  }
+}
+
 function generate_image_row(
   content_image_index,
   style_index,
@@ -92,6 +120,7 @@ function display() {
 
     enable_tooltip();
   }
+  window.addEventListener("resize", fix_image_size);
 }
 function content_previous_page() {
   content_base -= 1;
