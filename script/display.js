@@ -16,6 +16,8 @@ let content_base = 0;
 let style_base = 0;
 // styling
 const left_margin = "ms-1";
+// status
+let display = false;
 
 function generate_label_row() {
   let method_text = "";
@@ -120,7 +122,12 @@ function display() {
 
     enable_tooltip();
   }
-  window.addEventListener("resize", fix_image_size);
+
+  fix_image_size();
+  if (!display) {
+    display = true;
+    window.addEventListener("resize", fix_image_size);
+  }
 }
 function content_previous_page() {
   content_base -= 1;
