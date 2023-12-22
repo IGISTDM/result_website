@@ -17,7 +17,7 @@ let style_base = 0;
 // styling
 const left_margin = "ms-1";
 // status
-let display = false;
+let image_display = false;
 
 function generate_label_row() {
   let method_text = "";
@@ -53,9 +53,8 @@ function fix_image_size() {
   const image_width = windowWidth * width_ratio;
   const height_ratio = 250 / 695;
   const image_height = windowHeight * height_ratio;
-  console.log(image_width, image_height);
   // Get all img elements on the page
-  var imgElements = document.getElementsByTagName("img");
+  let imgElements = document.getElementsByTagName("img");
 
   // Iterate through each img element and modify its size
   for (var i = 0; i < imgElements.length; i++) {
@@ -124,8 +123,8 @@ function display() {
   }
 
   fix_image_size();
-  if (!display) {
-    display = true;
+  if (!image_display) {
+    image_display = true;
     window.addEventListener("resize", fix_image_size);
   }
 }
