@@ -37,28 +37,35 @@ function generate_label_row() {
   return label_row_html;
 }
 
-function fix_image_size() {
-  // Get the width and height of the browser window
-  let windowWidth =
+function get_window_size() {
+  let window_width =
     window.innerWidth ||
     document.documentElement.clientWidth ||
     document.body.clientWidth;
-  let windowHeight =
+  let window_height =
     window.innerHeight ||
     document.documentElement.clientHeight ||
     document.body.clientHeight;
+  return { width: window_width, height: window_height };
+}
+
+function fix_image_size() {
+  
+  let window_size = get_window_size();
+  const window_width = window_size.width;
+  const window_height = window_size.height;
 
   // image size
   const width_ratio = 250 / 1536;
-  const image_width = windowWidth * width_ratio;
+  const image_width = window_width * width_ratio;
   const height_ratio = 250 / 695;
-  const image_height = windowHeight * height_ratio;
+  const image_height = window_height * height_ratio;
   // Get all img elements on the page
-  let imgElements = document.getElementsByTagName("img");
+  let img_elements = document.getElementsByTagName("img");
 
   // Iterate through each img element and modify its size
-  for (var i = 0; i < imgElements.length; i++) {
-    let img = imgElements[i];
+  for (var i = 0; i < img_elements.length; i++) {
+    let img = img_elements[i];
     img.style.width = `${image_width}px`;
     img.style.height = `${image_height}px`;
   }
